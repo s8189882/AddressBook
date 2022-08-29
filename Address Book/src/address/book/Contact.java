@@ -8,15 +8,6 @@ public class Contact {
 	String phoneNumber;
 	String emailID;
 	
-	public Contact(String firstName, String lastName, Address address, String phoneNumber, String emailID) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.phoneNumber = phoneNumber;
-		this.emailID = emailID;
-	}
-	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -34,8 +25,10 @@ public class Contact {
 	public Address getAddress() {
 		return address;
 	}
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddress(String city, String state, int zipcode) {
+		this.address.setCity(city);
+		this.address.setState(state);
+		this.address.setZip(zipcode);
 	}
 	
 	public String getPhoneNumber() {

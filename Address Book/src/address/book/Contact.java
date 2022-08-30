@@ -25,10 +25,8 @@ public class Contact {
 	public Address getAddress() {
 		return address;
 	}
-	public void setAddress(String city, String state, int zipcode) {
-		this.address.setCity(city);
-		this.address.setState(state);
-		this.address.setZip(zipcode);
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	
 	public String getPhoneNumber() {
@@ -45,4 +43,9 @@ public class Contact {
 		this.emailID = emailID;
 	}	
 
+	@Override
+	public String toString() {
+		return "Contact Info : \nFirst Name : " + firstName + "\nLast Name : " + lastName + "\nAddress :\n" + address + "\nPhone Number : "
+				+ phoneNumber + "\nEmail ID : " + emailID;
+	}
 }

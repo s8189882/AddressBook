@@ -1,9 +1,11 @@
 package address.book;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBook {
 	static Scanner sc = new Scanner(System.in);
+	ArrayList contactList = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		AddressBook entry = new AddressBook();
@@ -41,6 +43,8 @@ public class AddressBook {
 		address.setState(state);
 		address.setZip(zip);
 		newcontact.setAddress(address);
+		
+		contactList.add(newcontact);		
 		displayContact(newcontact);
 		editContact(newcontact);
 	}
@@ -126,5 +130,6 @@ public class AddressBook {
 		contact.emailID = null;
 		
 		System.out.println("\n\nHere is the updated Address Book.");
-		displayContact(contact);	}
+		displayContact(contact);	
+		}
 }

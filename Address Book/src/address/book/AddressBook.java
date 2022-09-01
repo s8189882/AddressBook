@@ -113,18 +113,5 @@ public class AddressBook {
 		else {
 			System.out.println("\nInvalid Input.\nPlease try again!");
 		}
-		deleteContact(contact);
 	}
-	
-	public void deleteContact(Contact contact) {
-		contact.firstName = null;
-		contact.lastName = null;
-		contact.address.city = null;
-		contact.address.state = null;
-		contact.address.zip = null;
-		contact.phoneNumber = null;
-		contact.emailID = null;
-		
-		System.out.println("\n\nHere is the updated Address Book.");
-		displayContact(contact);	}
 }

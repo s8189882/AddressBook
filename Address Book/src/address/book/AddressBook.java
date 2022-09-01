@@ -1,8 +1,6 @@
 package address.book;
 
-public class AddressBook {
-	static Scanner sc = new Scanner(System.in);
-  
+public class AddressBook {  
 	public static void main(String[] args) {
 		AddressBookMethods entry = new AddressBookMethods();
 	

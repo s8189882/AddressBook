@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class AddressBook {
 	static Scanner sc = new Scanner(System.in);
-	
+  
 	public static void main(String[] args) {
 		AddressBook entry = new AddressBook();
 	
@@ -116,7 +116,6 @@ public class AddressBook {
 		else {
 			System.out.println("\nInvalid Input.\nPlease try again!");
 		}
-		deleteContact(contact);
 	}
 	
 	public void deleteContact(Contact contact) {

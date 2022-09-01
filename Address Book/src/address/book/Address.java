@@ -4,14 +4,7 @@ public class Address {
 	
 	String city;
 	String state;
-	int zip;
-	
-	
-	public Address(String city, String state, int zip) {
-		this.city = city;
-		this.state = state;
-		this.zip = zip;
-	}
+	String zip;
 	
 	public String getCity() {
 		return city;
@@ -27,11 +20,16 @@ public class Address {
 		this.state = state;
 	}
 	
-	public int getZip() {
+	public String getZip() {
 		return zip;
 	}
-	public void setZip(int zip) {
+	public void setZip(String zip) {
 		this.zip = zip;
+	}
+	
+	@Override
+	public String toString() {
+		return "City : " + city + "\tState : " + state + "\tZip : " + zip;
 	}
 
 }

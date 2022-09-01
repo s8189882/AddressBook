@@ -8,15 +8,6 @@ public class Contact {
 	String phoneNumber;
 	String emailID;
 	
-	public Contact(String firstName, String lastName, Address address, String phoneNumber, String emailID) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.phoneNumber = phoneNumber;
-		this.emailID = emailID;
-	}
-	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -52,4 +43,9 @@ public class Contact {
 		this.emailID = emailID;
 	}	
 
+	@Override
+	public String toString() {
+		return "Contact Info : \nFirst Name : " + firstName + "\nLast Name : " + lastName + "\nAddress :\n" + address + "\nPhone Number : "
+				+ phoneNumber + "\nEmail ID : " + emailID;
+	}
 }

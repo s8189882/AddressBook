@@ -6,9 +6,8 @@ import java.util.Scanner;
 public class AddressBookMethods {
 	
 	static Scanner sc = new Scanner(System.in);
-	ArrayList<Contact> contactList = new ArrayList<>();
 
-	public void manageAddressBook() {
+	public void manageAddressBook(String addressBook, ArrayList<Contact> contactList) {
 		int  choice = 0;
 		
 		do {
@@ -29,29 +28,29 @@ public class AddressBookMethods {
 			switch (choice)
 			{
 				case 1 :
-					addContact();
+					addContact(contactList);
 					break;
 					
 				case 2 :
-					editContact();
+					editContact(contactList);
 					break;
 					
 				case 3 :
-					deleteContact();
+					deleteContact(contactList);
 					break;
 					
 				case 4 :
-					displayAddressBook();
+					displayAddressBook(addressBook, contactList);
 					break;
 					
 				case 5 :
-					System.out.println("\nEXITED");
+					System.out.println("\nExiting Address Book '" + addressBook + "'");
 					break;
 			}
 		}while(choice != 5);	
 	}
 	
-	public Contact getContactToModify(String name) {
+	public Contact getContactToModify(String name, ArrayList<Contact> contactList) {
 		Contact contact = null;
 
 		for(int i = 0; i < contactList.size(); i++) {
@@ -63,7 +62,7 @@ public class AddressBookMethods {
 		return contact;
 	}
 	
-	public void addContact() {
+	public void addContact(ArrayList<Contact> contactList) {
 		System.out.println("\nCreating a new contact!");
 		System.out.print("Enter First Name :	");
 		String firstname = sc.next();
@@ -94,8 +93,7 @@ public class AddressBookMethods {
 		contactList.add(newcontact);	
 	}
 	
-	@Override
-	public String toString() {
+	public String toString(ArrayList<Contact> contactList) {
 		return "\nAddressBook [\nContact List" + contactList + "\n]";
 	}
 
@@ -103,25 +101,25 @@ public class AddressBookMethods {
 		System.out.println(contact);
 	}
 	
-	public void displayAddressBook() {
-		System.out.println("\n\n------- Address Book -------");
+	public void displayAddressBook(String addressbook, ArrayList<Contact> contactList) {
+		System.out.println("\n\n------- " + addressbook + " Address Book -------");
 		for (int i = 0; i < contactList.size(); i++) 
 			System.out.println("\n"+contactList.get(i));
 		System.out.println();
 	}
 	
-	public void editContact() {
+	public void editContact(ArrayList<Contact> contactList) {
 		Contact contact = null;
 		String name = null;
 				
 		System.out.print("\nEnter the First Name of the contact you want to edit : ");
 		name = sc.next();
 		while (contact == null) {
-			contact = getContactToModify(name);
+			contact = getContactToModify(name, contactList);
 			if (contact == null) {
 				System.out.print("\nNo such entry exists!\nPlease enter a valid First Name : ");
 				name = sc.next();
-				contact = getContactToModify(name);
+				contact = getContactToModify(name, contactList);
 			}
 		}
 		makeEdits(contact);
@@ -193,18 +191,18 @@ public class AddressBookMethods {
 		}	
 	}
 	
-	public void deleteContact() {
+	public void deleteContact(ArrayList<Contact> contactList) {
 		Contact contact = null;
 		String name = null;
-		
+
 		System.out.print("\nEnter the First Name of the contact you want to delete : ");
 		name = sc.next();
 		while (contact == null) {
-			contact = getContactToModify(name);
+			contact = getContactToModify(name, contactList);
 			if (contact == null) {
 				System.out.println("\nNo such entry exists!\nPlease enter a valid First Name.");
 				name = sc.next();
-				contact = getContactToModify(name);
+				contact = getContactToModify(name, contactList);
 			}
 		}
 		contactList.remove(contact);

@@ -22,16 +22,17 @@ public class AddressBook {
 				System.out.println("1. Add a New Address Book");
 				System.out.println("2. Edit an Existing Address Book");
 				System.out.println("3. Delete an Existing Address Book");
-				System.out.println("4. Display Address Book List");
-				System.out.println("5. List all Address Books");
-				System.out.println("6. Search for");
+				System.out.println("4. Search for Persons");
+				System.out.println("5. Display Persons by Location");
+				System.out.println("6. Display Address Book List");
+				System.out.println("7. List all Address Books");
 				System.out.println("0. Exit");
 				System.out.print("\nEnter your choice : ");
 				choice = sc.nextInt();
 				
-				if (!(choice >=0 && choice <= 6))
+				if (!(choice >=0 && choice <= 7))
 					System.out.println("\nInvalid choice!\nPlease try again.\n");	
-			}while (!(choice >=0 && choice <= 6));
+			}while (!(choice >=0 && choice <= 7));
 			
 			switch (choice)
 			{
@@ -47,16 +48,20 @@ public class AddressBook {
 					deleteAddressBook();
 					break;
 					
-				case 4 :
+				case 6 :
 					displayAddressBookList();
 					break;
 					
-				case  5 :
+				case  7 :
 					displayAllAddressBooks();
 					break;
 					
-				case  6 :
+				case  4 :
 					searchOperation();
+					break;
+					
+				case  5 :
+					displayByLocation();
 					break;
 					
 				case 0 :
@@ -66,6 +71,52 @@ public class AddressBook {
 		}while(choice != 0);	
 	}
 	
+	
+	public void displayByLocation() {
+		int  choice = 0;
+		do {
+			System.out.println("\nDisplay Persons ");
+			System.out.println("1. By City");
+			System.out.println("2. By State");
+			System.out.print("\nEnter your choice : ");
+			choice = sc.nextInt();
+			
+			if (!(choice ==1 || choice == 2))
+				System.out.println("\nInvalid choice!\nPlease try again.\n");	
+		}while (!(choice ==1 || choice == 2));
+		
+		switch (choice)
+		{
+			case 1 :
+				displayByCity();
+				break;
+				
+			case 2 :
+				displayByState();
+				break;
+				
+			default :
+				break;
+		}
+	}
+	
+	private void displayByState() {
+		ArrayList<String> states = AddressBookMethods.stateDictionary.values().stream().distinct().collect(Collectors.toCollection(ArrayList::new));
+		for (String state : states) {
+			System.out.println("\nPersons in '" + state + "' state : ");
+			AddressBookMethods.stateDictionary.entrySet().stream().filter(entry -> entry.getValue().equalsIgnoreCase(state)).forEach(entry -> System.out.println(entry.getKey()));
+		}
+	}
+
+
+	private void displayByCity() {
+		ArrayList<String> cities = AddressBookMethods.cityDictionary.values().stream().distinct().collect(Collectors.toCollection(ArrayList::new));
+		for (String city : cities) {
+			System.out.println("\nPersons in '" + city + "' city : ");
+			AddressBookMethods.cityDictionary.entrySet().stream().filter(entry -> entry.getValue().equalsIgnoreCase(city)).forEach(entry -> System.out.println(entry.getKey()));
+		}
+	}
+
 	public void searchOperation() {
 		int  choice = 0;
 			do {
